@@ -20,11 +20,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "tb_alunos")
+@Data //Nos dar os Gets e Settes para não precisar criarmos e deixarmos o arquivo maior.
+@NoArgsConstructor //Da um construtor sem Atributos, vazio
+@AllArgsConstructor //Da um construtor com TODOS atributos.
+@Entity //Cria a tabela no banco de dados, ela pede um Id por padrão
+@Table(name = "tb_alunos") // Para mudar o nome da tabela
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Aluno {
 
@@ -41,8 +41,8 @@ public class Aluno {
 
   private LocalDate dataDeNascimento;
 
-  @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
-  @JsonIgnore
+  @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY) //Cria um relacionamento, nesse caso um para muitos. mappedBy usamos pq em avaliacoes fisicas temos um atributo que representa o relacionamento. fechType.LAZY evita que ela seja carregada, ela só sera carregada quando for chamada.
+  @JsonIgnore //Ignora algumas exceções que por acaso ocorrerem. Foi definido junto da classe no @JsonIgnoreProperties, usamos isto por causa do fetch ser Lazy, pois ele pode gerar algumas exceções.
   private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
 
 }

@@ -27,9 +27,10 @@ public class AvaliacaoFisica {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  @ManyToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "aluno_id")
+  
+  //O relaciomaneto que esta sendo feito entre Aluno (la na classe) e avalizacaofisica (nesta classe) é bi-direcional, não é recomendado. O Ideal seria usar um unidirecional.
+  @ManyToOne(cascade = CascadeType.ALL) //Relacionamento muito para um. O atributo cascade faz com que o que ocorrer em AvaliacaoFisica vai repercurtir em Aluno (acho que é o contrario)
+  @JoinColumn(name = "aluno_id") //Qual coluna sera a foreign key, nome dela.
   private Aluno aluno;
 
   private LocalDateTime dataDaAvaliacao = LocalDateTime.now();

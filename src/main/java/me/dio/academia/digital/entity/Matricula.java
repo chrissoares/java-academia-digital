@@ -26,7 +26,7 @@ public class Matricula {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.ALL) //Já explicado em AvaliacaoFisica
   @JoinColumn(name = "aluno_id")
   private Aluno aluno;
 
