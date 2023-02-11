@@ -24,7 +24,6 @@ public class MatriculaServiceImpl implements IMatriculaService{
     @Override
     public Matricula create(MatriculaForm form) {
         Matricula matricula = new Matricula();
-        System.out.println(form.getAlunoId());
         Aluno aluno = alunoRepository.findById(form.getAlunoId()).get();
         matricula.setAluno(aluno);
 
@@ -41,7 +40,6 @@ public class MatriculaServiceImpl implements IMatriculaService{
         if (bairro == null)
             return matriculaRepository.findAll();
 
-        //return matriculaRepository.findByAlunoBairro(bairro);
         return matriculaRepository.findAlunosMatriculadosBairro(bairro);
     }
 

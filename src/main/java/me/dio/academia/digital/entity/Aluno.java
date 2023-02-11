@@ -45,4 +45,8 @@ public class Aluno {
   @JsonIgnore //Ignora algumas exceções que por acaso ocorrerem. Foi definido junto da classe no @JsonIgnoreProperties, usamos isto por causa do fetch ser Lazy, pois ele pode gerar algumas exceções.
   private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
 
+  @OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+  @JsonIgnore
+  private List<FichaTreino> fichaTreino = new ArrayList<>();
+
 }

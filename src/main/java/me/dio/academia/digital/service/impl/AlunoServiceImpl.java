@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Service;
 
 import me.dio.academia.digital.entity.Aluno;
@@ -35,8 +34,7 @@ public class AlunoServiceImpl implements IAlunoService{
 
     @Override
     public Aluno get(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return repository.findById(id).get();
     }
     
     @Override
@@ -55,14 +53,18 @@ public class AlunoServiceImpl implements IAlunoService{
 
     @Override
     public Aluno update(Long id, AlunoUpdateForm formUpdate) {
-        // TODO Auto-generated method stub
-        return null;
+        Aluno aluno = repository.findById(id).get();
+
+        aluno.setBairro(formUpdate.getBairro());
+        aluno.setNome(formUpdate.getNome());
+        aluno.setDataDeNascimento(formUpdate.getDataDeNascimento());
+        return repository.save(aluno);
     }
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
-        
+        Aluno aluno = repository.findById(id).get();
+        repository.delete(aluno);
     }
 
     @Override

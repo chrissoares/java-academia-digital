@@ -1,7 +1,5 @@
 package me.dio.academia.digital.entity.form;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AlunoUpdateForm {
+public class FichaTreinoExercicioUpdateForm {
 
-  private String nome;
 
-  private String bairro;
+    private int series;
 
-  private LocalDate dataDeNascimento;
+    private int repeticoes;
+
+    private int intervalo;
+
+    private int frequenciaSemanal;
+    
 }
